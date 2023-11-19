@@ -4,7 +4,11 @@ const Bread = require('../models/bread.js')
 
 // http://localhost:3000/breads/
 breads.get('/', (req, res) =>{
-    res.send('This is an index of breads')
+    res.send('This is an index of /breads')
+})
+
+breads.get('/', (req, res) =>{
+    res.send(Bread)
 })
 
 // show
