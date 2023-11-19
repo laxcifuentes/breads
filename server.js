@@ -17,7 +17,7 @@ app.get('/', (req, res) =>{
     res.send('Welcome to an Awesome App about Breads!')
 })
 
-const breadsController = require('./controllers/controllers/controllers/breads_controller.js')
+const breadsController = require('./controllers/breads_controller.js')
 app.use('/breads', breadsController)
 
 // listen
