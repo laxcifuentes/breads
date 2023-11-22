@@ -19,13 +19,14 @@ app.use(express.urlencoded({extended: true}))
 app.get('/', (req, res) =>{
     res.send('Welcome to an Awesome App about Breads!')
 })
+
+const breadsController = require('./controllers/breads_controller.js')
+app.use('/breads', breadsController)
+
 // 404 page route
 app.get('*', (req, res) => {
     res.send('404')
 })
-
-const breadsController = require('./controllers/breads_controller.js')
-app.use('/breads', breadsController)
 
 // listen
 app.listen(PORT, () => {
