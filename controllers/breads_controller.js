@@ -3,14 +3,14 @@ const breads = express.Router()
 const Bread = require('../models/bread')
 
 breads.get('/', (req, res) =>{
-    res.render('index', {
+    res.status(303).render('index', {
             breads: Bread
         }
     )
 })
 
 breads.get('/new', (req, res) => {
-    res.render('new')
+    res.status(303).render('new')
 })
 
 // create
@@ -22,7 +22,7 @@ breads.post('/', (req, res) => {
         req.body.hasGluten = 'false'
     }
     Bread.push(req.body)
-    res.redirect('/breads')
+    res.status(303).redirect('/breads')
 })
 
 breads.post('/', (req, res) => {
@@ -35,7 +35,7 @@ breads.post('/', (req, res) => {
       req.body.hasGluten = false
     }
     Bread.push(req.body)
-    res.redirect('/breads')
+    res.status(303).redirect('/breads')
   })
   
 
@@ -43,11 +43,18 @@ breads.post('/', (req, res) => {
 breads.get('/:arrayIndex', (req, res) => {
     if (Bread[req.params.arrayIndex]) {
       res.render('Show', {
-        bread: Bread[req.params.arrayIndex]
+        bread:Bread[req.params.arrayIndex],
+        index: req.params.arrayIndex,
       })
     } else {
-      res.render('404')
+      res.status(303).render('404')
     }
+  })
+
+  // delete
+  breads.delete('/:indexArray', (req, res) => {
+    Bread.splice(req.params.indexArray, 1)
+    res.status(303).redirect('/breads')
   })
   
 
