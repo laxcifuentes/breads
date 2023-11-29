@@ -5,6 +5,7 @@ function Default(html) {
     <html>
       <head>
         <title>Default</title>
+        <link rel="shortcut icon" type='img/jpg' href="/images/kawaii-bread.jpg" />
       </head>
       <body>
         <div className = 'wrapper'>
